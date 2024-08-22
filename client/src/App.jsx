@@ -1,15 +1,15 @@
-import "./App.css";
-import Root from "./Root";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
-import SigninPage from "./pages/SigninPage/SigninPage";
-import SignupPage from "./pages/SignupPage/SignupPage";
-import { useState, useEffect } from "react";
-import axiosInstance, { setAccessToken } from "./axiosInstance";
-import "./style.scss"
+import './App.css';
+import Root from './Root';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HomePage from './pages/HomePage/HomePage';
+import SigninPage from './pages/SigninPage/SigninPage';
+import SignupPage from './pages/SignupPage/SignupPage';
+import { useState, useEffect } from 'react';
+import axiosInstance, { setAccessToken } from './axiosInstance';
+import './style.scss';
 
-import ProtectedRoute from "./ProtectedRoute";
-import List from "./components/List";
+import ProtectedRoute from './ProtectedRoute';
+import CartPage from './pages/CartPage/CartPage';
 
 function App() {
   const [user, setUser] = useState({});
@@ -25,32 +25,32 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <Root user={user} setUser={setUser} />,
       children: [
         {
-          path: "/",
+          path: '/',
           element: <HomePage user={user} />,
         },
         {
-          path: "/signin",
+          path: '/signin',
           element: (
-            <ProtectedRoute authUser={user.username} redirectTo={"/"}>
+            <ProtectedRoute authUser={user.username} redirectTo={'/'}>
               <SigninPage setUser={setUser} />
             </ProtectedRoute>
           ),
         },
         {
-          path: "/signup",
+          path: '/signup',
           element: (
-            <ProtectedRoute authUser={user.username} redirectTo={"/"}>
+            <ProtectedRoute authUser={user.username} redirectTo={'/'}>
               <SignupPage setUser={setUser} />
             </ProtectedRoute>
           ),
         },
         {
-          path: "/cart",
-          element: <List user={user} />,
+          path: '/cart',
+          element: <CartPage user={user} />,
         },
       ],
     },

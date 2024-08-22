@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from './HomePage.module.css';
 import axiosInstance from '../../axiosInstance';
-//import List from '../../components/List';
+
 
 const { VITE_API } = import.meta.env;
 
