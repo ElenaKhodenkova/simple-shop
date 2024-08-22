@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Cart.init({
+    id: {primaryKey: true, type: [DataTypes.INTEGER]},
     productId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     count: DataTypes.INTEGER,
