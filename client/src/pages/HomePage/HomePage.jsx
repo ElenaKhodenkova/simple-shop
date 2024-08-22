@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import styles from './HomePage.module.css';
 import axiosInstance from '../../axiosInstance';
-import List from '../../components/List';
+//import List from '../../components/List';
 
-export default function HomePage({ user }) {
+const { VITE_API } = import.meta.env;
+
+
+export default function HomePage({ user, productId }) {
   const [entries, setEntries] = useState([]);
 
    useEffect(() => {
@@ -15,10 +18,16 @@ export default function HomePage({ user }) {
       .catch((err) => console.error(err));
   }, []);
 
+
+const addProduct = async(productId) => {
+      await axiosInstance.post(`${VITE_API}/carts/cart`, {productId});
+  
+};
+
   return (
     <> 
     <div className={styles.wrapper}>
-    <List user={user}/>
+    
   </div>
     <div className={styles.wrapper}>
      { entries.length ? entries.map((el) => (<div className="card" key={el.id} style={{width: '18rem'}}>
@@ -27,7 +36,7 @@ export default function HomePage({ user }) {
     <p className="card-text">{el.price}</p>
     <p className="card-text">{el.description}</p>
     <img src={el.image} className="border border-info rounded" />
-    <a href="#" className="btn btn-primary mt-2">Купить</a>
+    <button onClick={() => addProduct(el.id)} className="btn btn-primary mt-2">Купить</button>
   </div>
 </div> 
         ))
@@ -38,11 +47,7 @@ export default function HomePage({ user }) {
 
 
 
-{/* name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    description: DataTypes.TEXT,
-    image: DataTypes.STRING,
-    count: DataTypes.INTEGER, */}
+
 
 
 
