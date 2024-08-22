@@ -2,8 +2,7 @@ const router = require('express').Router();
 const { Product } = require('../../db/models');
 const { verifyAccessToken } = require('../../middlewares/verifyToken');
 
-router
-  .get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
       const entries = await Product.findAll();
       res.json(entries);
@@ -13,7 +12,7 @@ router
     }
   })
 
-  .post('/:id', async (req, res) => {
+  router.post('/:id', async (req, res) => {
     const { productId } = req.body;
     try {
       const product = await Product.findByPk(productId);
@@ -30,7 +29,8 @@ router
     }
   })
 
-  .delete('/:id', verifyAccessToken, async (req, res) => {
+  
+  router.delete('/:id', verifyAccessToken, async (req, res) => {
     const { id } = req.params;
     const { user } = res.locals;
     try {
