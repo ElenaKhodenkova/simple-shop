@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const verifyRefreshToken = (req, res, next) => {
   try {
@@ -15,7 +16,7 @@ const verifyRefreshToken = (req, res, next) => {
 
 const verifyAccessToken = (req, res, next) => {
   try {
-    const accessToken = req.headers.authorization.split(' ')[1];
+    const accessToken = req.headers.authorization;
     console.log(accessToken);
     const { user } = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
     res.locals.user = user;

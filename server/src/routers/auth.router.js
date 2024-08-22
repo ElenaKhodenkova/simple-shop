@@ -46,8 +46,7 @@ router
     }
 
     const user = await User.findOne({ where: { email } });
-
-    const isCorrectPassword = await bcrypt.compare(password, user.password);
+    const isCorrectPassword = await bcrypt.compare(password,  user?.password);
 
     if (!isCorrectPassword) {
       res.status(401).json({ message: 'Incorrect email or password' });
@@ -56,7 +55,7 @@ router
       delete plainUser.password;
 
       const { accessToken, refreshToken } = generateToken({ user: plainUser });
-
+      
       res
         .cookie('refreshToken', refreshToken, cookieConfig.refreshToken)
         .json({ user: plainUser, accessToken });

@@ -4,13 +4,13 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     const arr = [];
-    const desc = 'наименование товара #';
+    
     for (let i = 1; i <= 10; i++) {
       arr.push({
-        name: desc + i,
+        name: "наименование товара №" + i,
         price: i * 1000,
-        description: 'описание товара ' + desc,
-        image: '/img/' + i,
+        description: 'описание товара №' + i,
+        image: '/img/' + i + ".webp",
         count: i,
       });
     }

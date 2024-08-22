@@ -13,7 +13,7 @@ router
     }
   })
 
-  .post('/counter', async (req, res) => {
+  .post('/:id', async (req, res) => {
     const { productId } = req.body;
     try {
       const product = await Product.findByPk(productId);
