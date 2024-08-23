@@ -61,11 +61,10 @@ router
         .cookie('refreshToken', refreshToken, cookieConfig.refreshToken)
         .json({ user: plainUser, accessToken });
       }
+    } else {
+      res.sendStatus(404)
     }
   })
-
-
-
 
 
   .get('/logout', (req, res) => {
