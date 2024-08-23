@@ -19,19 +19,21 @@ export default function Navbar({ user, setUser }) {
 
   return (
     <nav className={styles.wrapper}>
-      <div className={styles.left}>
+      <div className={styles.center}>
         <Link to='/'>На главную</Link>
       </div>
-      <div className={styles.right}>
+      <div className={styles.center}>
         {user?.email ? (
           <>
-            <Link to='/cart'>Корзина</Link>
-            <Link onClick={logoutHandler}>Выйти</Link>
+            <Link to='/cart'> Корзина </Link>
+            <Link to='/add-product'> Добавить товар </Link>
+            <Link to='/edit-product'> Редактировать товар </Link>
+            <Link onClick={logoutHandler}> Выйти </Link>
           </>
         ) : (
           <>
-            <Link to='/signin'>Войти</Link>
-            <Link to='/signup'>Регистрация</Link>
+            <Link to='/signin'> Войти </Link>
+            <Link to='/signup'> Регистрация </Link>
           </>
         )}
       </div>

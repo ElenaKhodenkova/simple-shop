@@ -10,6 +10,8 @@ import './style.scss';
 
 import ProtectedRoute from './ProtectedRoute';
 import CartPage from './pages/CartPage/CartPage';
+import AddProduct from './pages/AddProduct/AddProduct';
+import EditProduct from './pages/EditProduct/EditProduct';
 
 function App() {
   const [user, setUser] = useState({});
@@ -51,6 +53,14 @@ function App() {
         {
           path: '/cart',
           element: <CartPage user={user} />,
+        },
+        {
+          path: '/add-product',
+          element: <AddProduct user={user} />,
+        },
+        {
+          path: '/edit-product',
+          element: <EditProduct user={user} />,
         },
       ],
     },
