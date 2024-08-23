@@ -1,21 +1,8 @@
-/* .wrapper {
+.wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   padding: 20px;
-} */
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Разделим на 3 колонки */
-  gap: 40px; /* Добавим пробелы между элементами */
-  padding: 40px; /* Добавим отступы для контейнера */
-}
-
-.card {
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
