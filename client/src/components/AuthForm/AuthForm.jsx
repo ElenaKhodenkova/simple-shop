@@ -12,6 +12,8 @@ export default function AuthForm({ title, type = 'signin', setUser }) {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const [errorMessage, setErrorMessage] = useState('');
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -24,14 +26,30 @@ export default function AuthForm({ title, type = 'signin', setUser }) {
       setAccessToken(response.data.accessToken);
 
       navigate('/');
-    } catch (error) {
-      console.error(error);
+    } 
+    catch (error) {
+      if (error.response) {
+        if (error.response.status === 409) {
+          
+          setErrorMessage('Такой пользователь уже существует');
+        } else if (error.response.status === 401) {
+          
+          setErrorMessage('Неверный пароль');
+        } else {
+          setErrorMessage('Произошла ошибка, попробуйте еще раз');
+        }
+      } else {
+        console.error(error);
+        setErrorMessage('Произошла ошибка, попробуйте еще раз');
+      }
     }
   };
 
   return (
     <form onSubmit={submitHandler} className={styles.wrapper}>
       <h3 className={styles.head}>{title}</h3>
+      {errorMessage && <div className={styles.error}>{errorMessage}</div>}
+
       <div className={styles.inputs}>
         {type === 'signin' && (
           <>
