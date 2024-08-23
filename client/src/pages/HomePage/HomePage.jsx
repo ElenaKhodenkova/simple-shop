@@ -33,10 +33,10 @@ const addProduct = async(productId) => {
      { entries.length ? entries.map((el) => (<div className="card" key={el.id} style={{width: '18rem'}}>
     <div className="card-body">
     <h5 className="card-title">{el.name}</h5>
-    <p className="card-text">{el.price}</p>
+    <p className="card-text">{el.price} рубликов </p>
     <p className="card-text">{el.description}</p>
     <img src={el.image} className="border border-info rounded" />
-    <button onClick={() => addProduct(el.id)} className="btn btn-primary mt-2">Купить</button>
+    <button onClick={() => addProduct(el.id)} className="btn btn-primary mt-2">Добавить в корзину</button>
   </div>
 </div> 
         ))

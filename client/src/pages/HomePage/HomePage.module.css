@@ -1,8 +1,24 @@
 .wrapper {
   display: flex;
-  flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
-  justify-content: center; /* Центрирует элементы по горизонтали */
-  align-items: center; /* Центрирует элементы по вертикали */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   padding: 20px;
-  gap: 20px; /* Расстояние между элементами */
 }
+
+.wrapper img {
+  flex-basis: calc(33.33% - 20px); /* 3 колонки по умолчанию */
+}
+
+@media (max-width: 767px) {
+  .wrapper img {
+    flex-basis: calc(50% - 20px); /* 2 колонки на небольших экранах */
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper img {
+    flex-basis: 100%; /* 1 колонка на очень небольших экранах */
+  }
+}
+

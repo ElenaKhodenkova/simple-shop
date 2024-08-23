@@ -53,8 +53,6 @@ router.delete('/:id', verifyAccessToken, async (req, res) =>{
 try {
   const product = await Cart.findOne({where: { productId: id, userId: user.id }})
     if (product.userId == user.id) 
-        
-    
     {
     product.destroy();
     res.sendStatus(200);
