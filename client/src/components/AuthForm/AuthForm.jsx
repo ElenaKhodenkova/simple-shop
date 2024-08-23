@@ -13,10 +13,8 @@ export default function AuthForm({ title, type = 'signin', setUser }) {
   };
 
   const [errorMessage, setErrorMessage] = useState('');
-
   const submitHandler = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axiosInstance.post(
         `${import.meta.env.VITE_API}/auth/${type}`,
@@ -26,8 +24,7 @@ export default function AuthForm({ title, type = 'signin', setUser }) {
       setAccessToken(response.data.accessToken);
 
       navigate('/');
-    } 
-    catch (error) {
+    } catch (error) {
       if (error.response) {
         if (error.response.status === 409) {
           
@@ -44,7 +41,6 @@ export default function AuthForm({ title, type = 'signin', setUser }) {
       }
     }
   };
-
   return (
     <form onSubmit={submitHandler} className={styles.wrapper}>
       <h3 className={styles.head}>{title}</h3>

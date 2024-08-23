@@ -38,6 +38,7 @@ router
 
     res.end();
   })
+  
   .post('/signin', async (req, res) => {
     const { email, password } = req.body;
 
@@ -46,21 +47,27 @@ router
     }
 
     const user = await User.findOne({ where: { email } });
-    const isCorrectPassword = await bcrypt.compare(password,  user?.password);
+    if (user){
 
-    if (!isCorrectPassword) {
-      res.status(401).json({ message: 'Incorrect email or password' });
-    } else {
-      const plainUser = user.get();
-      delete plainUser.password;
-
-      const { accessToken, refreshToken } = generateToken({ user: plainUser });
+      const isCorrectPassword = await bcrypt.compare(password,  user?.password);
       
-      res
+      if (!isCorrectPassword) {
+        res.status(401).json({ message: 'Incorrect email or password' });
+      } else {
+        const plainUser = user.get();
+        delete plainUser.password;
+        const { accessToken, refreshToken } = generateToken({ user: plainUser });
+        res
         .cookie('refreshToken', refreshToken, cookieConfig.refreshToken)
         .json({ user: plainUser, accessToken });
+      }
     }
   })
+
+
+
+
+
   .get('/logout', (req, res) => {
     try {
       res.clearCookie('refreshToken').sendStatus(200);

@@ -52,12 +52,8 @@ router.delete('/:id', verifyAccessToken, async (req, res) =>{
   const { user } = res.locals;
 try {
   const product = await Cart.findOne({where: { productId: id, userId: user.id }})
-  console.log("_______________", product.userId);
-  console.log("uuuuuuuuuuuuuu", user.id);
-  if (product.userId == user.id) 
-    
-     
-    
+    if (product.userId == user.id) 
+        
     
     {
     product.destroy();
