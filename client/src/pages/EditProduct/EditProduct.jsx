@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import styles from './EditProduct.module.css';
 import axiosInstance from '../../axiosInstance';
 
-
 export default function EditProduct({ productId }) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');

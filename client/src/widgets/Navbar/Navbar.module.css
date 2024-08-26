@@ -3,9 +3,8 @@
   top: 0px;
   width: 100vw;
   height: 70px;
-  /*backdrop-filter: blur(10px);*/
   background-color: rgb(220, 228, 235);
-  
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,11 +12,21 @@
   padding: 0 20px;
   z-index: 1;
   opacity: 97%;
+  gap: 10px; /* Добавляем расстояние между элементами */
 }
 
 .left, .right {
-  width: 160px;
-
   display: flex;
   justify-content: space-between;
+  gap: 10px; /* Добавляем расстояние между элементами */
+}
+
+.wrapper a {
+  color: #354179; /* Цвет текста ссылок */
+  font-size: 20px; /* Размер шрифта ссылок */
+  text-decoration: none; /* Удаляем подчеркивание у ссылок */
+}
+
+.wrapper a:hover {
+  color: #007bff; /* Цвет текста при наведении */
 }

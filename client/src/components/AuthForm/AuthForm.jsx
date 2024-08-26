@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styles from './AuthForm.module.css';
-//import { Input, Button } from '@chakra-ui/react';
 import axiosInstance, { setAccessToken } from '../../axiosInstance';
 import { useNavigate } from 'react-router-dom';
 

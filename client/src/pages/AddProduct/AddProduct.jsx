@@ -11,14 +11,18 @@ export default function AddProduct() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axiosInstance.post('/products', {
+      const response = await axiosInstance.post(`${import.meta.env.VITE_API}/products`, {
         name,
         price,
         description,
         image,
       });
-      if (response.status === 200) {
+      if (response.status === 201) {
         alert('Товар добавлен!');
+        setName('');
+        setPrice('');
+        setDescription('');
+        setImage('');
       }
     } catch (error) {
       console.error(error);
